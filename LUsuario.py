@@ -12,22 +12,20 @@ class LUsuario:
         line = passwd_file.readline()
         passwd_file.close()
         ident,senha = string.split(line, " ")
-        #ident = "abc"
-        #senha = "1234"
         if (pident == ident) and (ppasswd == senha):
             return "passed"
         else:
             return "failed"
 
-    def set_client_Cookie(self):
+    def set_client_Cookie(self,ident):
         # Create a Cookie object.
         a_cookie = Cookie.Cookie()
 
         # Assign the cookie a value.
-        a_cookie["user"] = "Python"
+        a_cookie["user"] = ident
 
         # Required header that tells the browser how to render the HTML.
-        #print "Content-Type: text/html" informado na verificacao de senha
+        print "Content-Type: text/html"
 
         # Send the cookie back to the client.
         print a_cookie, "\n\n"
@@ -35,7 +33,7 @@ class LUsuario:
         # Print the cookie value.
         print "<HTML><BODY>"
         print a_cookie["user"].value, "user cookie set.\n"
-        print "<FORM METHOD = post ACTION = \"example_7.4.cgi\">\n"
+        print "<FORM METHOD = post ACTION = \"CEmpresa.py\">\n"
         print "<INPUT TYPE = \"hidden\" NAME = \
         \"set\" VALUE =\"yes\">\n"
         print "<INPUT TYPE = \"submit\" VALUE = \"Go\"></FORM>\n"
@@ -60,7 +58,7 @@ class LUsuario:
 
     # Define function display_page.
     def display_page(self,result):
-        print "Content-type:text/html\r\n\r\n"
+        #print "Content-type:text/html\r\n\r\n"
         print "<HTML>\n"
         print "<HEAD>\n"
         print "\t<TITLE>Info Form</TITLE>\n"
@@ -76,16 +74,18 @@ class LUsuario:
 def main():
     form = cgi.FieldStorage()
     lUsuario = LUsuario()
+    lUsuario.set_client_Cookie(form["username"].value) 
     if form.has_key("action"):
         if (form["action"].value == "login"):
             result = lUsuario.test(form["username"].value, form["password"].value)
             lUsuario.display_page(result)
+        #if  result == "passed":    
+            #lUsuario.set_client_Cookie(form["username"].value) 
 
             #if (form.has_key("set")):
              #   if (form["set"].value == "yes"):
                      #lUsuario.read_client_Cookie()
                 #else:
-            lUsuario.set_client_Cookie() 
     
 
 

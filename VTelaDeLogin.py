@@ -18,7 +18,7 @@ def main():
     print "\t<H3>Digite usuario e senha</H3>\n"
     print "\t<TABLE BORDER = 0>\n"
     print "\t\t<FORM METHOD = post ACTION = \
-    \"LUsuario.py\">\n"
+    \"/cgi-bin/LUsuario.py\">\n"
     print "\t\t<TR><TH>Usuario:</TH><TD><INPUT TYPE = text \
     NAME = \"username\"></TD><TR>\n"
     print "\t\t<TR><TH>Senha:</TH><TD><INPUT \
