@@ -4,11 +4,14 @@ cgitb.enable()
 
 
 class Empresa:
- 
-    def __init__(self,nome="",cnpj="",email=""):
-        self.nome = nome
-        self.cnpj = cnpj
-        self.email = email
+
+    #def __init__(self):
+     #   self.nome = default
+
+#    def __init__(self,nome,cnpj,email):
+ #       self.nome = nome
+  #      self.cnpj = cnpj
+   #      self.email = email
 
     def save(self):
         file = open("empresas.txt","a+")

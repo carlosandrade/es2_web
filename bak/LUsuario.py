@@ -32,18 +32,18 @@ class LUsuario:
         a_cookie["email"] = empresa.email
 
         # Required header that tells the browser how to render the HTML.
-        #print "Content-Type: text/html"
+        print "Content-Type: text/html"
 
         # Send the cookie back to the client.
         print a_cookie, "\n\n"
 
         # Print the cookie value.
         print "<HTML><BODY>"
-        print "Bem vinda, ",a_cookie["user"].value, "\n"
+        print "Bem vindo, ",a_cookie["user"].value,"\n"
         print "<FORM METHOD = post ACTION = \"CEmpresa.py\">\n"
         print "<INPUT TYPE = \"hidden\" NAME = \
-        \"set\" VALUE =\"yes\">\n"
-        print "<INPUT TYPE = \"submit\" VALUE = \"Go\"></FORM>\n"
+        \"action\" VALUE =\"show_account\">\n"
+        print "<INPUT TYPE = \"submit\" VALUE = \"Ir para minha conta\"></FORM>\n"
         print "</BODY></HTML>\n"
 
     # Define function to read a cookie.
@@ -64,16 +64,16 @@ class LUsuario:
 
 
     # Define function display_page.
-    def display_page(self,result):
+    def display_page(self,result,user):
         print "Content-type:text/html\r\n\r\n"
         print "<HTML>\n"
         print "<HEAD>\n"
         print "\t<TITLE>Info Form</TITLE>\n"
         print "</HEAD>\n"
         print "<BODY BGCOLOR = white>\n"
-        if result == "passed":
-            print "Senha correta.\n"
-        else:
+        #if result == "passed":
+        #    print "Bem vindo,",user," \n"
+        if result != "passed":
             print "Senha incorreta, favor tentar novamente.\n"
         print "</BODY>\n"
         print "</HTML>\n"
@@ -85,9 +85,10 @@ def main():
     if form.has_key("action"):
         if (form["action"].value == "login"):
             result = lUsuario.test(form["username"].value, form["password"].value)
-            lUsuario.display_page(result)
-            if  result == "passed":    
-                lUsuario.set_client_Cookie(form["username"].value) 
+            lUsuario.display_page(result,form["username"].value)
+             
+        if  result == "passed":    
+            lUsuario.set_client_Cookie(form["username"].value) 
 
             #if (form.has_key("set")):
              #   if (form["set"].value == "yes"):
