@@ -25,8 +25,8 @@ def imprime_tabela_de_dados():
 
 
 
-    print "\t<INPUT TYPE = submit VALUE = \"Submeter\">\n"
-
+    print "\t<INPUT TYPE = submit NAME = \"check\" VALUE = \"visualizar\">\n"
+    print "\t<INPUT TYPE = submit NAME = \"check\" VALUE = \"cadastrar\">\n"
     print "\t</FORM>\n"
 
 
