@@ -6,6 +6,7 @@ cgitb.enable()
 
 # Define function to generate HTML form.
 def main():
+    print "Content-type:text/html\r\n\r\n"
     print "<HTML>\n"
     print "<HEAD>\n"
     print "\t<TITLE>Tela de login</TITLE>\n"
