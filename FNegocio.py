@@ -3,7 +3,7 @@
 # Import the CGI, string, sys, and md5crypt modules
 
 import cgi, cgitb
-import LEmpresa, LUsuario
+import LEmpresa, LUsuario,LAdministrador
 cgitb.enable()
 
 class FNegocio:
@@ -17,6 +17,10 @@ class FNegocio:
      def logicaAdministrador(self,form):
          lAdministrador = LAdministrador.LAdministrador(form)
 
+     def administradorExibeOferta(self):
+         lAdministrador = LAdministrador.LAdministrador()
+         return lAdministrador.exibeOfertas()
+
 def main():
     form = cgi.FieldStorage()
     fNegocio = FNegocio()
@@ -27,7 +31,6 @@ def main():
             fNegocio.logicaUsuario(form)
         if form["action"].value == "TAvaliarOferta":
             fNegocio.logicaAdministrador(form)
-
 
 #Call main function.
 main()

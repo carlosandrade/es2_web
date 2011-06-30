@@ -1,7 +1,8 @@
 #!/usr/bin/python
 
 # Import the CGI, string, sys, and md5crypt modules
-import cgi, cgitb
+import cgi, cgitb, string
+import FNegocio
 cgitb.enable() 
 
 
@@ -20,8 +21,11 @@ def main():
     print "\t<INPUT TYPE=HIDDEN NAME = \"action\" VALUE = \
     #\"TAvaliarOferta\">\n"
     print "\t\t<SELECT NAME = \"dropdown\">"
-    print "\t\t<OPTION VALUE = \"ceni\"> Baritissimo para Rogerio Ceni </ OPTION > "
-    print "\t\t<OPTION VALUE = \"cabelo\"> Troque seu cabelo por um cerebro </ OPTION > "
+    fNegocio = FNegocio.FNegocio()
+    ofertas = fNegocio.administradorExibeOferta()
+    for oferta in ofertas:
+        nomeOferta = string.split(oferta, " ")
+        print "\t\t<OPTION VALUE = \"",nomeOferta[0],"\">",nomeOferta[0],"</ OPTION > "
     print "\t\t</SELECT>"
     print "\t<INPUT TYPE = submit NAME = \"check\" VALUE = \"avaliar\">\n"
     print "\t<INPUT TYPE = submit NAME = \"check\" VALUE = \"recusar\">\n"

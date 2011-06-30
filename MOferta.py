@@ -8,17 +8,17 @@ class Oferta:
     def __init__(self,nomeOferta="", cotaMinima="", descontoOferecido="", preco="", regulamento="", validade="", limiteCompraPorPessoa="", detalhes="", avaliacao=""):
         self.nomeOferta = nomeOferta
 
-    def update(self,username):
+  #  def update(self,username):
 
 #    def save(self):
 #        file = open("empresas.txt","a+")
 #        file.write(self.nome+" "+self.cnpj+" "+self.email+"\n")
 #        file.close()
 
-    def open(self,username):
-        file = open("empresas.txt","r")
-        line = file.readline()
+    def openAll(self):
+        file = open("ofertas.txt","r+")
+        ofertas = file.readlines()
         file.close()
-        self.nome,self.cnpj,self.email = string.split(line, " ")
+        return ofertas
 
-    def search(self,username):
+   # def search(self,username):
