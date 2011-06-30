@@ -1,2 +1,1 @@
-empresa1 1111 emailempresaPokemon 1247129047 haduki
-bla bli blo
+empresa1 1111 email

@@ -3,7 +3,7 @@
 # Import the CGI, string, sys, and md5crypt modules
 
 import cgi, cgitb
-import LEmpresa
+import LEmpresa, LUsuario
 cgitb.enable()
 
 class FNegocio:
@@ -11,22 +11,17 @@ class FNegocio:
      def logicaEmpresa(self,form):
          lEmpresa = LEmpresa.LEmpresa(form)
 
+     def logicaUsuario(self,form):
+         lUsuario = LUsuario.LUsuario(form)
+
 def main():
     form = cgi.FieldStorage()
     fNegocio = FNegocio()
     if form.has_key("action"):
         if form["action"].value == "TCadastroEmpresa":
             fNegocio.logicaEmpresa(form)
-        else:
-            print "Content-type:text/html\r\n\r\n"
-            print "<HTML>\n"
-            print "<HEAD>\n"
-            print "\t<TITLE>Info Form</TITLE>\n"
-            print "</HEAD>\n"
-            print "<BODY BGCOLOR = white>\n"
-            print "Senha incorreta, favor tentar novamente.\n"
-            print "</BODY>\n"
-            print "</HTML>\n"
+        if form["action"].value == "TLogin":
+            fNegocio.logicaUsuario(form)
 
 #Call main function.
 main()

@@ -7,6 +7,15 @@ import MEmpresa
 cgitb.enable()
 
 class LUsuario:
+
+    def __init__(self,form):
+        if form.has_key("action"):
+            if (form["action"].value == "TLogin"):
+                result = self.test(form["username"].value, form["password"].value)
+                self.display_page(result)
+                if  result == "passed":    
+                    self.set_client_Cookie(form["username"].value)
+
 	# Define function to test the password.
     def test(self,pident, ppasswd):
         passwd_file = open('passwords.txt', 'r')
@@ -77,24 +86,3 @@ class LUsuario:
             print "Senha incorreta, favor tentar novamente.\n"
         print "</BODY>\n"
         print "</HTML>\n"
-
-def main():
-    form = cgi.FieldStorage()
-    lUsuario = LUsuario()
-    #lUsuario.set_client_Cookie(form["username"].value) 
-    if form.has_key("action"):
-        if (form["action"].value == "login"):
-            result = lUsuario.test(form["username"].value, form["password"].value)
-            lUsuario.display_page(result)
-            if  result == "passed":    
-                lUsuario.set_client_Cookie(form["username"].value) 
-
-            #if (form.has_key("set")):
-             #   if (form["set"].value == "yes"):
-                     #lUsuario.read_client_Cookie()
-                #else:
-    
-
-
-#Call main function.
-main()
