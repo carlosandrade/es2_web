@@ -49,7 +49,7 @@ class LUsuario:
         # Print the cookie value.
         print "<HTML><BODY>"
         print "Bem vinda, ",a_cookie["user"].value, "\n"
-        print "<FORM METHOD = post ACTION = \"CEmpresa.py\">\n"
+        print "<FORM METHOD = post ACTION = \"TMinhaConta.py\">\n"
         print "<INPUT TYPE = \"hidden\" NAME = \
         \"set\" VALUE =\"yes\">\n"
         print "<INPUT TYPE = \"submit\" VALUE = \"Go\"></FORM>\n"

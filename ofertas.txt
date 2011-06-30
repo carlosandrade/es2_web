@@ -1,0 +1,1 @@
+nomeOferta cotaMinima descontoOferecido preco regulamento validade limiteCompraPorPessoa detalhes avaliacao
