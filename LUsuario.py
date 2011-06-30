@@ -22,8 +22,8 @@ class LUsuario:
         passwd_file = open('passwords.txt', 'r')
         line = passwd_file.readline()
         passwd_file.close()
-        ident,senha = string.split(line, " ")
-        if (pident == ident) and (ppasswd == senha):
+        dados = string.split(line, " ")
+        if (pident == dados[0]) and (ppasswd == dados[1]):
             return "passed"
         else:
             return "failed"

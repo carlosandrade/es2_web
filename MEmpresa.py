@@ -19,4 +19,4 @@ class Empresa:
         file = open("empresas.txt","r")
         line = file.readline()
         file.close()
-        self.nome,self.cnpj,self.email = string.split(line, " ")
+        self.nome,self.cnpj,self.email,enter = string.split(line, " ")

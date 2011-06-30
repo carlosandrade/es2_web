@@ -14,6 +14,9 @@ class FNegocio:
      def logicaUsuario(self,form):
          lUsuario = LUsuario.LUsuario(form)
 
+     def logicaAdministrador(self,form):
+         lAdministrador = LAdministrador.LAdministrador(form)
+
 def main():
     form = cgi.FieldStorage()
     fNegocio = FNegocio()
@@ -22,6 +25,9 @@ def main():
             fNegocio.logicaEmpresa(form)
         if form["action"].value == "TLogin":
             fNegocio.logicaUsuario(form)
+        if form["action"].value == "TAvaliarOferta":
+            fNegocio.logicaAdministrador(form)
+
 
 #Call main function.
 main()
