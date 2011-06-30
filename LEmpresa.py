@@ -5,15 +5,18 @@ import cgi, cgitb
 import MEmpresa, Cookie, os
 cgitb.enable()
 
-
-
-
 # Create instance of FieldStorage 
 
 
 #Cria a classe controller de empresas
 
-class CEmpresa:
+class LEmpresa:
+	
+    def __init__(self,form=""):
+       if form.has_key("action"):
+            if form["action"].value == "TCadastroEmpresa":
+                if form["check"].value == "cadastrar":
+	                self.salvaEmpresa(form["business_name"].value, form["business_cnpj"].value, form["business_email"].value)
 
     def exibeCadastro(self, name, cnpj, email):
         print "Content-type:text/html\r\n\r\n"
@@ -25,9 +28,6 @@ class CEmpresa:
         print "<h2>Hello %s %s %s</h2>" % (name, cnpj,email)
         print "</body>"
         print "</html>"
-
-    def exibeConta(self):
-	    print "Location: VTelaMinhaConta"
 
     def salvaEmpresa(self,name,cnpj,email):
         
@@ -57,19 +57,6 @@ def read_client_Cookie():
 
     # Print the cookie value.
     print "<HTML><BODY>"
-    print a_cookie["user"].value, a_cookie["cnpj"].value,a_cookie["email"].value, "user cookie set.\n"
+    print cookie_val, "user cookie read from client.\n"
+    print "Empresa:", a_cookie["user"].value,"CNPJ:",a_cookie["cnpj"].value,"Email:",a_cookie["email"].value,"\n"    
     print "</BODY></HTML>\n"
-
-def main():
-    form = cgi.FieldStorage()
-    cEmpresa = CEmpresa()
-    if form.has_key("action") and form.has_key("check"):
-        if form["check"].value == "visualizar":
-            cEmpresa.exibeCadastro(form["business_name"].value, form["business_cnpj"].value, form["business_email"].value)
-        if form["check"].value == "cadastrar":
-            cEmpresa.salvaEmpresa(form["business_name"].value, form["business_cnpj"].value, form["business_email"].value)
-        #if form["check"].value == "Ir para minha conta":
-         #   cEmpresa.exibeConta()
-    #else:
-        #read_client_Cookie();    
-main()

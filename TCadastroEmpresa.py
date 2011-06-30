@@ -1,15 +1,13 @@
 #!/usr/bin/python
 
-#import CEmpresa
-
 def imprime_tabela_de_dados():
     print "\t<H3>Favor digitar Nome da empresa, cnpj e e-mail<H3>\n"
     print "\t<TABLE BORDER = 0> \n"
     print "\t\t<FORM METHOD = post ACTION = \
-    \"/cgi-bin/CEmpresa.py\">\n"
+    \"/cgi-bin/FNegocio.py\">\n"
 
     print "\t<INPUT TYPE=HIDDEN NAME = \"action\" VALUE = \
-    \"display\">\n"
+    \"TCadastroEmpresa\">\n"
 
 
     print "\t\t<TR><TH>Nome da Empresa:</TH><TD><INPUT type = text \
