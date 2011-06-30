@@ -24,8 +24,28 @@ def read_client_Cookie():
     #print "</BODY></HTML>\n"
 
 
+def read_client_Cookie():
+        # Create a Cookie object.
+     a_cookie = Cookie.Cookie( os.environ.get("HTTP_COOKIE", "") )
+
+
+        # Assign the variable a cookie value.
+     #cookie_val = a_cookie["user"].value
+
+        # Required header that tells the browser how to render the HTML.
+     print "Content-Type: text/html\n\n"
+
+        # Print the cookie value.
+     print "<HTML><BODY>"
+     print a_cookie
+     #print cookie_val, "user cookie read from client.\n"
+     print "</BODY></HTML>\n"
+
+
+
 def main():
-    
+     
+#     read_client_Cookie()
     a_cookie = Cookie.Cookie( os.environ.get("HTTP_COOKIE", "") )
     print "Content-type:text/html\r\n\r\n"
     print "<HTML>\n"
@@ -42,8 +62,9 @@ def main():
     \"TMinhaConta\">\n"
 
 
-    print "\t\t<TR><TH>Nome: ",a_cookie["user"].value,"</TH><TD>\n"
-
+    print "\t\t<TR><TH>Usuario: ",a_cookie["user"].value,"</TH><TD>\n"
+    print "\t\t<TR><TH>CNPJ: ",a_cookie["cnpj"].value,"</TH><TD>\n"
+    print "\t\t<TR><TH>Email: ",a_cookie["email"].value,"</TH><TD>\n"
     #print "\t\t<TR><TH>CNPJ:</TH><TD><INPUT type = text \
     #name = \"business_cnpj\"></TD><TR>\n"
 

@@ -12,8 +12,9 @@ class LUsuario:
         if form.has_key("action"):
             if (form["action"].value == "TLogin"):
                 result = self.test(form["username"].value, form["password"].value)
-                self.display_page(result)
-                if  result == "passed":    
+                if result != "passed":
+                    self.display_page(result)
+                else:    
                     self.set_client_Cookie(form["username"].value)
 
 	# Define function to test the password.
@@ -29,7 +30,7 @@ class LUsuario:
 
     def set_client_Cookie(self,ident):
         # Create a Cookie object.
-        a_cookie = Cookie.Cookie()
+        a_cookie = Cookie.SimpleCookie()
 
         #Load Empresa from file using id
         empresa = MEmpresa.Empresa()
@@ -41,30 +42,34 @@ class LUsuario:
         a_cookie["email"] = empresa.email
 
         # Required header that tells the browser how to render the HTML.
-        #print "Content-Type: text/html"
+        print "Content-Type: text/html"
 
         # Send the cookie back to the client.
         print a_cookie, "\n\n"
 
         # Print the cookie value.
         print "<HTML><BODY>"
-        print "Bem vinda, ",a_cookie["user"].value, "\n"
+        print "Bem vinda, ",empresa.nome, "\n"
         print "<FORM METHOD = post ACTION = \"TMinhaConta.py\">\n"
         print "<INPUT TYPE = \"hidden\" NAME = \
         \"set\" VALUE =\"yes\">\n"
-        print "<INPUT TYPE = \"submit\" VALUE = \"Go\"></FORM>\n"
+        print "<INPUT TYPE = \"submit\" VALUE = \"Continuar\"></FORM>\n"
         print "</BODY></HTML>\n"
+        print
 
     # Define function to read a cookie.
     def read_client_Cookie(self):
+
+        # Required header that tells the browser how to render the HTML.
+        print "Content-Type: text/html\n\n"
+
         # Create a Cookie object.
         a_cookie = Cookie.Cookie( os.environ.get("HTTP_COOKIE", "") )
 
         # Assign the variable a cookie value.
         cookie_val = a_cookie["user"].value
 
-        # Required header that tells the browser how to render the HTML.
-        print "Content-Type: text/html\n\n"
+
 
         # Print the cookie value.
         print "<HTML><BODY>"

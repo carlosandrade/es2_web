@@ -4,10 +4,6 @@
 import cgi, cgitb
 cgitb.enable() 
 
-
-# Required header that tells the browser how to render the HTML.
-print "Content-Type: text/html\n\n"
-
 # Define function to generate HTML form.
 def main():
     print "<HTML>\n"
