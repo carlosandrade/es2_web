@@ -1,4 +1,4 @@
-oferta1 cotaMinima descontoOferecido preco regulamento validade limiteCompraPorPessoa detalhes avaliacao status
-oferta2 cotaMinima descontoOferecido preco regulamento validade limiteCompraPorPessoa detalhes avaliacao status
-oferta3 cotaMinima descontoOferecido preco regulamento validade limiteCompraPorPessoa detalhes avaliacao status
-oferta4 cotaMinima descontoOferecido preco regulamento validade limiteCompraPorPessoa detalhes avaliacao status
+oferta1 cotaMinima descontoOferecido preco regulamento validade limiteCompraPorPessoa detalhes avaliacao status 
+oferta2cotaMinima descontoOferecido preco regulamento validade limiteCompraPorPessoa detalhes avaliacao aceita 
+oferta3 cotaMinima descontoOferecido preco regulamento validade limiteCompraPorPessoa detalhes avaliacao aceita 
+oferta4 cotaMinima descontoOferecido preco regulamento validade limiteCompraPorPessoa detalhes avaliacao status 

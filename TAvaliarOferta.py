@@ -19,19 +19,13 @@ def main():
     print "\t\t<FORM METHOD = post ACTION = \
     \"/cgi-bin/FNegocio.py\">\n"
     print "\t<INPUT TYPE=HIDDEN NAME = \"action\" VALUE = \
-    #\"TAvaliarOferta\">\n"
+    \"TAvaliarOferta\">\n"
     fNegocio = FNegocio.FNegocio()
     fNegocio.administradorExibeDadosOfertasPendentes()
     fNegocio.administradorDropOfertasPendentes()
-    print "\t<INPUT TYPE = submit NAME = \"check\" VALUE = \"avaliar\">\n"
+    print "\t<INPUT TYPE = submit NAME = \"check\" VALUE = \"aceitar\">\n"
     print "\t<INPUT TYPE = submit NAME = \"check\" VALUE = \"recusar\">\n"
     print "\t<INPUT TYPE = submit NAME = \"check\" VALUE = \"modficacao\">\n"
-
-    
-
-    #print "\t\t<TR><TH>Usuario: ",a_cookie["user"].value,"</TH><TD>\n"
-    #print "\t\t<TR><TH>CNPJ: ",a_cookie["cnpj"].value,"</TH><TD>\n"
-    #print "\t\t<TR><TH>Email: ",a_cookie["email"].value,"</TH><TD>\n"
 
     print "\t</TABLE>\n"
     print "\t</FORM>\n"

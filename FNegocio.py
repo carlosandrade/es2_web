@@ -3,7 +3,8 @@
 # Import the CGI, string, sys, and md5crypt modules
 
 import cgi, cgitb
-import LEmpresa, LUsuario,LAdministrador
+import LEmpresa, LUsuario
+import LAdministrador
 cgitb.enable()
 
 class FNegocio:
@@ -36,6 +37,16 @@ def main():
             fNegocio.logicaUsuario(form)
         if form["action"].value == "TAvaliarOferta":
             fNegocio.logicaAdministrador(form)
+        else:
+            print "Content-type:text/html\r\n\r\n"
+            print "<HTML>\n"
+            print "<HEAD>\n"
+            print "\t<TITLE>Redirecionando...</TITLE>\n"
+            print "</HEAD>\n"
+            print "<BODY>\n"
+            print "\t<H3>Action: ",form["action"].value,"<H3>\n"
+            print "</BODY>\n"
+            print "</HTML>\n"
 
 #Call main function.
 main()
