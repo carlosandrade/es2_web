@@ -20,13 +20,9 @@ def main():
     \"/cgi-bin/FNegocio.py\">\n"
     print "\t<INPUT TYPE=HIDDEN NAME = \"action\" VALUE = \
     #\"TAvaliarOferta\">\n"
-    print "\t\t<SELECT NAME = \"dropdown\">"
     fNegocio = FNegocio.FNegocio()
-    ofertas = fNegocio.administradorExibeOferta()
-    for oferta in ofertas:
-        nomeOferta = string.split(oferta, " ")
-        print "\t\t<OPTION VALUE = \"",nomeOferta[0],"\">",nomeOferta[0],"</ OPTION > "
-    print "\t\t</SELECT>"
+    fNegocio.administradorExibeDadosOfertasPendentes()
+    fNegocio.administradorDropOfertasPendentes()
     print "\t<INPUT TYPE = submit NAME = \"check\" VALUE = \"avaliar\">\n"
     print "\t<INPUT TYPE = submit NAME = \"check\" VALUE = \"recusar\">\n"
     print "\t<INPUT TYPE = submit NAME = \"check\" VALUE = \"modficacao\">\n"

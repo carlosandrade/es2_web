@@ -17,9 +17,14 @@ class FNegocio:
      def logicaAdministrador(self,form):
          lAdministrador = LAdministrador.LAdministrador(form)
 
-     def administradorExibeOferta(self):
+     def administradorDropOfertasPendentes(self):
          lAdministrador = LAdministrador.LAdministrador()
-         return lAdministrador.exibeOfertas()
+         lAdministrador.DropOfertasPendentes()
+
+     def administradorExibeDadosOfertasPendentes(self):
+         lAdministrador = LAdministrador.LAdministrador()
+         lAdministrador.exibeDadosOfertasPendentes()
+
 
 def main():
     form = cgi.FieldStorage()
