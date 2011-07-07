@@ -18,17 +18,17 @@ class LConsumidor:
 	                self.salvaConsumidor(form["nome"].value, form["email"].value, form["ncartao"].value, form["tipoCartao"].value, form["login"].value, form["password"].value)
 
 
-    def exibeDadosConsumidor(self):
-         a_cookie = Cookie.Cookie( os.environ.get("HTTP_COOKIE", "") )
-         if a_cookie.has_key("login"):
-            consumidor = MConsumidor.Consumidor()
-            consumidor.open(a_cookie["login"].value)
-                         
-            print "\t\t<TR><TH>Nome: </TH><TH>",consumidor.nome,"</TH><TR>\n"
+#    def exibeDadosConsumidor(self):
+#         a_cookie = Cookie.Cookie( os.environ.get("HTTP_COOKIE", "") )
+#         if a_cookie.has_key("login"):
+#            consumidor = MConsumidor.Consumidor()
+#            consumidor.open(a_cookie["login"].value)
+#                         
+#            print "\t\t<TR><TH>Nome: </TH><TH>",consumidor.nome,"</TH><TR>\n"
 
-            print "\t\t<TR><TH>Numero do cartao: </TH><TH>",consumidor.ncartao,"</TH><TR>\n"
+#            print "\t\t<TR><TH>Numero do cartao: </TH><TH>",consumidor.ncartao,"</TH><TR>\n"
 
-            print "\t\t<TR><TH>Tipo do cartao: </TH><TH>",consumidor.tipoCartao,"</TH><TR>\n"
+#            print "\t\t<TR><TH>Tipo do cartao: </TH><TH>",consumidor.tipoCartao,"</TH><TR>\n"
 
 
     def salvaConsumidor(self,nome,email,ncartao,tipoCartao,login,password):

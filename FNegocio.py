@@ -34,13 +34,18 @@ class FNegocio:
          lAdministrador = LAdministrador.LAdministrador()
          return lAdministrador.getDadosOfertasPendentes()
          
+     def getOferta(self,nomeOferta):
+         lOferta = LOferta.LOferta()
+         return lOferta.getOferta(nomeOferta)
+         
      def telaPrincipalExibeOfertaDia(self):
          lOferta = LOferta.LOferta()
          lOferta.exibe_oferta_do_dia()
+
      
-     def exibeDadosCompraConsumidor(self):
-        lConsumidor = LConsumidor.LConsumidor()
-        lConsumidor.exibeDadosConsumidor()
+     #def exibeDadosCompraConsumidor(self):
+     #   lConsumidor = LConsumidor.LConsumidor()
+     #   lConsumidor.exibeDadosConsumidor()
 
 
 
@@ -54,7 +59,7 @@ def main():
             fNegocio.logicaUsuario(form)
         elif form["action"].value == "TAvaliarOferta":
             fNegocio.logicaAdministrador(form)
-        elif form["action"].value == "TSubmissaoOferta":
+        elif (form["action"].value == "TSubmissaoOferta") or (form["action"].value == "TCompraOferta"):
             fNegocio.logicaOferta(form)
         elif form["action"].value == "TCadastroConsumidor":
             fNegocio.logicaConsumidor(form)

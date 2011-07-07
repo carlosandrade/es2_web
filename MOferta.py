@@ -44,6 +44,6 @@ class Oferta:
         for oferta in ofertas:
             campoOferta = string.split(oferta," ")
             if campoOferta[0] == nomeOferta:
-                self.nome,self.cota_minima,self.preco,self.desconto,self.regulamento,self.validade,self.limite,self.detalhes,self.reputacao,self.avaliacao,enter = campoOferta         
-            return
+                self.nome,self.cota_minima,self.preco,self.desconto,self.regulamento,self.validade,self.limite,self.detalhes,self.reputacao,self.avaliacao,self.quantidade,enter = campoOferta         
+                return
 

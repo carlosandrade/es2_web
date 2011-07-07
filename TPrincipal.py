@@ -1,6 +1,8 @@
 #!/usr/bin/python
 
+import cgi, cgitb, string
 import FNegocio
+cgitb.enable() 
 
 def imprime_tabela_de_dados():
 
@@ -9,7 +11,7 @@ def imprime_tabela_de_dados():
     print "\t<H1>ComprOn<H1>\n"
     print "\t<TABLE BORDER = 0> \n"
     print "\t\t<FORM METHOD = post ACTION = \
-    \"/cgi-bin/FNegocio.py\">\n"
+    \"/cgi-bin/TCompraOferta.py\">\n"
 
     print "\t<INPUT TYPE=HIDDEN NAME = \"action\" VALUE = \
     \"TPrincipal\">\n"
@@ -22,11 +24,27 @@ def imprime_tabela_de_dados():
     
     print "\t</TABLE>\n"
     
-    fNegocio.telaPrincipalExibeOfertaDia()
-    
-    print "\t<INPUT TYPE = submit NAME = \"check\" VALUE = \"Compre Agora!\">\n"
 
-    print "\t</FORM>\n"
+    fNegocio.telaPrincipalExibeOfertaDia()
+
+
+
+    print "\t<INPUT TYPE = submit NAME = \"check\" VALUE = \"Compre Agora!\">\n"
+    print "\t\n<H3>Outras Ofertas<H3>\n"
+
+    ofertasDropdown = fNegocio.administradorDropOfertasPendentes()
+
+    print "\t\t<SELECT NAME = \"dropdown\">"
+    for oferta in ofertasDropdown:
+        nomeOferta = string.split(oferta, " ")
+        print "\t\t<OPTION VALUE=\"%s\">%s</ OPTION >" % (nomeOferta[0],nomeOferta[0])
+    print "\t\t</SELECT>"
+    print "\t<INPUT TYPE = submit NAME = \"check\" VALUE = \"Compre Tambem!\">\n"
+	
+    print "\t</FORM>\n"    
+
+
+        
 
 
 def main():
