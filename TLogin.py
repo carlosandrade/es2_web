@@ -16,10 +16,13 @@ def main():
     print "\t<TABLE BORDER = 0>\n"
     print "\t\t<FORM METHOD = post ACTION = \
     \"/cgi-bin/FNegocio.py\">\n"
+ 
     print "\t\t<TR><TH>Usuario:</TH><TD><INPUT TYPE = text \
-    NAME = \"username\"></TD><TR>\n"
+    NAME = \"login\"></TD><TR>\n"
+
     print "\t\t<TR><TH>Senha:</TH><TD><INPUT \
     TYPE = password NAME = \"password\"></TD></TR>\n"
+
     print "\t</TABLE>\n"
     print "\t<INPUT TYPE = hidden NAME = \"action\" VALUE = \
     \"TLogin\">\n"

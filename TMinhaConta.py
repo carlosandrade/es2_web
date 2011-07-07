@@ -22,7 +22,7 @@ def main():
     print "\t<INPUT TYPE=HIDDEN NAME = \"action\" VALUE = \
     \"TMinhaConta\">\n"
 
-    print "\t\t<TR><TH>Usuario: ",a_cookie["user"].value,"</TH><TD>\n"
+    print "\t\t<TR><TH>Usuario: ",a_cookie["nome"].value,"</TH><TD>\n"
     print "\t\t<TR><TH>CNPJ: ",a_cookie["cnpj"].value,"</TH><TD>\n"
     print "\t\t<TR><TH>Email: ",a_cookie["email"].value,"</TH><TD>\n"
 

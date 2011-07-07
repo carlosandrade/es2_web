@@ -19,6 +19,12 @@ def imprime_tabela_de_dados():
     print "\t\t<TR><TH>Email da empresa:</TH><TD><INPUT type = text \
     name = \"business_email\"></TD></TR>\n"
 
+    print "\t\t<TR><TH>Login da empresa:</TH><TD><INPUT type = text \
+    name = \"business_login\"></TD></TR>\n"
+
+    print "\t\t<TR><TH>Senha da empresa:</TH><TD><INPUT type = password \
+    name = \"business_password\"></TD></TR>\n"
+
     print "\t</TABLE>\n"
 
 

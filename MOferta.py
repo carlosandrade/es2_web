@@ -5,15 +5,23 @@ cgitb.enable()
 
 class Oferta:
  
-    def __init__(self,nomeOferta="", cotaMinima="", descontoOferecido="", preco="", regulamento="", validade="", limiteCompraPorPessoa="", detalhes="", avaliacao=""):
-        self.nomeOferta = nomeOferta
+    def __init__(self,nome="",cota_minima="",preco="",desconto="",regulamento="",validade="",limite="",detalhes="",reputacao="neutra",avaliacao="pendente"):
+        self.nome = nome
+        self.cota_minima = cota_minima
+        self.preco = preco
+        self.desconto = desconto 
+        self.regulamento = regulamento
+        self.validade = validade
+        self.limite = limite
+        self.detalhes = detalhes
+        self.reputacao = reputacao
+        self.avaliacao = avaliacao
 
-  #  def update(self,username):
 
-#    def save(self):
-#        file = open("empresas.txt","a+")
-#        file.write(self.nome+" "+self.cnpj+" "+self.email+"\n")
-#        file.close()
+    def save(self):
+        file = open("ofertas.txt","a+")
+        file.write(self.nome+" "+self.cota_minima+" "+self.preco+" "+self.desconto+" "+self.regulamento+" "+self.validade+" "+self.limite+" "+self.detalhes+" "+self.reputacao+" "+self.avaliacao+" \n")
+        file.close()
 
     def openAll(self):
         file = open("ofertas.txt","r+")
@@ -34,9 +42,8 @@ class Oferta:
         ofertas = file.readlines()
         file.close()
         for oferta in ofertas:
-            campoOferta = string.split(oferta)
+            campoOferta = string.split(oferta," ")
             if campoOferta[0] == nomeOferta:
-                return campoOferta
-        return "not_found"            
-
+                self.nome,self.cota_minima,self.preco,self.desconto,self.regulamento,self.validade,self.limite,self.detalhes,self.reputacao,self.avaliacao,enter = campoOferta         
+            return
 

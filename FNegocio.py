@@ -4,7 +4,9 @@
 
 import cgi, cgitb
 import LEmpresa, LUsuario
-import LAdministrador
+import LAdministrador, LOferta
+import LConsumidor
+import biscoito, Cookie, os
 cgitb.enable()
 
 class FNegocio:
@@ -15,16 +17,31 @@ class FNegocio:
      def logicaUsuario(self,form):
          lUsuario = LUsuario.LUsuario(form)
 
+     def logicaOferta(self,form):
+         lOferta = LOferta.LOferta(form)
+    
+     def logicaConsumidor(self,form):
+        lConsumidor = LConsumidor.LConsumidor(form)
+
      def logicaAdministrador(self,form):
          lAdministrador = LAdministrador.LAdministrador(form)
 
      def administradorDropOfertasPendentes(self):
          lAdministrador = LAdministrador.LAdministrador()
-         lAdministrador.DropOfertasPendentes()
+         return lAdministrador.DropOfertasPendentes()
 
-     def administradorExibeDadosOfertasPendentes(self):
+     def administradorGetDadosOfertasPendentes(self):
          lAdministrador = LAdministrador.LAdministrador()
-         lAdministrador.exibeDadosOfertasPendentes()
+         return lAdministrador.getDadosOfertasPendentes()
+         
+     def telaPrincipalExibeOfertaDia(self):
+         lOferta = LOferta.LOferta()
+         lOferta.exibe_oferta_do_dia()
+     
+     def exibeDadosCompraConsumidor(self):
+        lConsumidor = LConsumidor.LConsumidor()
+        lConsumidor.exibeDadosConsumidor()
+
 
 
 def main():
@@ -33,11 +50,27 @@ def main():
     if form.has_key("action"):
         if form["action"].value == "TCadastroEmpresa":
             fNegocio.logicaEmpresa(form)
-        if form["action"].value == "TLogin":
+        elif form["action"].value == "TLogin":
             fNegocio.logicaUsuario(form)
-        if form["action"].value == "TAvaliarOferta":
+        elif form["action"].value == "TAvaliarOferta":
             fNegocio.logicaAdministrador(form)
-        else:
+        elif form["action"].value == "TSubmissaoOferta":
+            fNegocio.logicaOferta(form)
+        elif form["action"].value == "TCadastroConsumidor":
+            fNegocio.logicaConsumidor(form)
+        elif form["action"].value == "TPrincipal":
+            print "Content-type:text/html\r\n\r\n"
+            if form["check"].value == "Login":
+                print "<meta HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=/cgi-bin/TLogin.py\">"
+            elif form["check"].value == "Cadastrar(Cliente)":
+                print "<meta HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=/cgi-bin/TCadastroConsumidor.py\">"
+            elif form["check"].value == "Cadastrar(Empresa)":
+                print "<meta HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=/cgi-bin/TCadastroEmpresa.py\">"
+            elif form["check"].value == "Compre Agora!":
+                print "<meta HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=/cgi-bin/TCompraOferta.py\">"
+                            
+                    
+        else:  
             print "Content-type:text/html\r\n\r\n"
             print "<HTML>\n"
             print "<HEAD>\n"

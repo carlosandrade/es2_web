@@ -3,7 +3,7 @@
 # Import the CGI, string, sys, and md5crypt modules
 
 import cgi, cgitb, string, Cookie, os
-import MEmpresa
+import MEmpresa, MUsuario, MConsumidor
 cgitb.enable()
 
 class LUsuario:
@@ -11,51 +11,93 @@ class LUsuario:
     def __init__(self,form):
         if form.has_key("action"):
             if (form["action"].value == "TLogin"):
-                result = self.test(form["username"].value, form["password"].value)
+                result = self.test(form["login"].value, form["password"].value)
                 if result != "passed":
                     self.display_page(result)
                 else:    
-                    self.set_client_Cookie(form["username"].value)
+                    tipo = self.tipoUsuario(form["login"].value)
+                    self.set_client_Cookie(tipo,form["login"].value)
 
 	# Define function to test the password.
-    def test(self,pident, ppasswd):
-        passwd_file = open('passwords.txt', 'r')
-        line = passwd_file.readline()
-        passwd_file.close()
-        dados = string.split(line, " ")
-        if (pident == dados[0]) and (ppasswd == dados[1]):
-            return "passed"
-        else:
-            return "failed"
+    def test(self,login, password):
+        usuario = MUsuario.Usuario()
+        usuarios = usuario.openAll()
+        for i in range(len(usuarios)):
+   	        campoUsuario = string.split(usuarios[i]," ")
+   	        if (login == campoUsuario[1]) and (password == campoUsuario[2]):
+   	            return "passed"
+        return "failed"
 
-    def set_client_Cookie(self,ident):
+    def tipoUsuario(self,login):
+        usuario = MUsuario.Usuario()
+        usuarios = usuario.openAll()
+        for i in range(len(usuarios)):
+            campoUsuario = string.split(usuarios[i]," ")
+            if (login == campoUsuario[1]):
+                return campoUsuario[0]
+
+    def set_client_Cookie(self,tipo,login):
         # Create a Cookie object.
         a_cookie = Cookie.SimpleCookie()
+        
+        if (tipo == "consumidor"):
+            consumidor = MConsumidor.Consumidor()
+            consumidor.open(login)
 
-        #Load Empresa from file using id
-        empresa = MEmpresa.Empresa()
-        empresa.open(ident)
+            # Assign the cookie a value.
+            a_cookie["nome"] = consumidor.nome
+            a_cookie["email"] = consumidor.email
+            a_cookie["ncartao"] = consumidor.ncartao
+            a_cookie["tipoCartao"] = consumidor.tipoCartao
+            a_cookie["login"] = consumidor.login
+            a_cookie["password"] = consumidor.password
+            
+            # Required header that tells the browser how to render the HTML.
+            print "Content-Type: text/html"
 
-        # Assign the cookie a value.
-        a_cookie["user"] = empresa.nome
-        a_cookie["cnpj"] = empresa.cnpj
-        a_cookie["email"] = empresa.email
+		    # Send the cookie back to the client.
+            print a_cookie, "\n\n"
 
-        # Required header that tells the browser how to render the HTML.
-        print "Content-Type: text/html"
+		    # Print the cookie value.
+            print "<HTML><BODY>"
+            print "Bem vinda, ",consumidor.nome, "\n"
+            print "<FORM METHOD = post ACTION = \"TMinhaConta.py\">\n"
+            print "<INPUT TYPE = \"hidden\" NAME = \
+            \"set\" VALUE =\"yes\">\n"
+            print "<INPUT TYPE = \"submit\" VALUE = \"Continuar\"></FORM>\n"
+            print "</BODY></HTML>\n"
+            print
 
-        # Send the cookie back to the client.
-        print a_cookie, "\n\n"
+            
 
-        # Print the cookie value.
-        print "<HTML><BODY>"
-        print "Bem vinda, ",empresa.nome, "\n"
-        print "<FORM METHOD = post ACTION = \"TMinhaConta.py\">\n"
-        print "<INPUT TYPE = \"hidden\" NAME = \
-        \"set\" VALUE =\"yes\">\n"
-        print "<INPUT TYPE = \"submit\" VALUE = \"Continuar\"></FORM>\n"
-        print "</BODY></HTML>\n"
-        print
+        elif (tipo == "empresa"):
+    	    #Load Empresa from file using id
+            empresa = MEmpresa.Empresa()
+            empresa.open(login)
+
+            # Assign the cookie a value.
+            a_cookie["nome"] = empresa.nome
+            a_cookie["cnpj"] = empresa.cnpj
+            a_cookie["email"] = empresa.email
+            a_cookie["login"] = empresa.login
+            a_cookie["password"] = empresa.password
+            a_cookie["reputacao"] = empresa.reputacao
+
+		    # Required header that tells the browser how to render the HTML.
+            print "Content-Type: text/html"
+
+		    # Send the cookie back to the client.
+            print a_cookie, "\n\n"
+
+		    # Print the cookie value.
+            print "<HTML><BODY>"
+            print "Bem vinda, ",empresa.nome, "\n"
+            print "<FORM METHOD = post ACTION = \"TMinhaConta.py\">\n"
+            print "<INPUT TYPE = \"hidden\" NAME = \
+            \"set\" VALUE =\"yes\">\n"
+            print "<INPUT TYPE = \"submit\" VALUE = \"Continuar\"></FORM>\n"
+            print "</BODY></HTML>\n"
+            print
 
     # Define function to read a cookie.
     def read_client_Cookie(self):

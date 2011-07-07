@@ -5,18 +5,28 @@ cgitb.enable()
 
 class Empresa:
  
-    def __init__(self,nome="",cnpj="",email=""):
+    def __init__(self,nome="",cnpj="",email="",login="",password="",reputacao="neutra"):
         self.nome = nome
         self.cnpj = cnpj
         self.email = email
+	self.reputacao = reputacao
+        self.login = login
+        self.password = password
 
     def save(self):
         file = open("empresas.txt","a+")
-        file.write(self.nome+" "+self.cnpj+" "+self.email+"\n")
+        file.write(self.nome+" "+self.cnpj+" "+self.email+" "+self.login+" "+self.password+" "+self.reputacao+" \n")
         file.close()
 
-    def open(self,username):
-        file = open("empresas.txt","r")
-        line = file.readline()
+    def open(self,login):
+        empresas = self.openAll()
+        for i in range(len(empresas)):
+            campoEmpresa = string.split(empresas[i]," ")
+            if (login == campoEmpresa[3]):
+                self.nome,self.cnpj,self.email,self.login,self.password,self.reputacao,enter = campoEmpresa
+
+    def openAll(self):
+        file = open("empresas.txt","r+")
+        empresas = file.readlines()
         file.close()
-        self.nome,self.cnpj,self.email,enter = string.split(line, " ")
+        return empresas

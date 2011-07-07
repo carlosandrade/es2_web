@@ -2,7 +2,7 @@
 
 # Import modules for CGI handling 
 import cgi, cgitb
-import MEmpresa, Cookie, os
+import MEmpresa, MUsuario, Cookie, os
 cgitb.enable()
 
 # Create instance of FieldStorage 
@@ -16,7 +16,7 @@ class LEmpresa:
        if form.has_key("action"):
             if form["action"].value == "TCadastroEmpresa":
                 if form["check"].value == "cadastrar":
-	                self.salvaEmpresa(form["business_name"].value, form["business_cnpj"].value, form["business_email"].value)
+	                self.salvaEmpresa(form["business_name"].value, form["business_cnpj"].value, form["business_email"].value,form["business_login"].value, form["business_password"].value)
 
     def exibeCadastro(self, name, cnpj, email):
         print "Content-type:text/html\r\n\r\n"
@@ -29,10 +29,12 @@ class LEmpresa:
         print "</body>"
         print "</html>"
 
-    def salvaEmpresa(self,name,cnpj,email):
+    def salvaEmpresa(self,name,cnpj,email,login,password):
         
-        empresa = MEmpresa.Empresa(name,cnpj,email)
+        empresa = MEmpresa.Empresa(name,cnpj,email,login,password)
         empresa.save()
+	usuario = MUsuario.Usuario("empresa",login,password)
+	usuario.save()
         print "Content-type:text/html\r\n\r\n"
         print "<html>"
         print "<head>"
@@ -41,7 +43,7 @@ class LEmpresa:
         print "<body>"
         print "<h2>Os dados da empresa",name,"foram cadastrados com sucesso</h2>\n"
         print "<p>O que deseja fazer agora?\n<p>"
-        print " <a 	href=\"VTelaDeCadastro.py\">Retornar a tela de cadastro de empresa</a>"
+        print " <a 	href=\"TCadastroEmpresa.py\">Retornar a tela de cadastro de empresa</a>"
         print "</body>"
         print "</html>"
 

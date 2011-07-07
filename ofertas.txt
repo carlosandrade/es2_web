@@ -1,4 +1,2 @@
-oferta1 cotaMinima descontoOferecido preco regulamento validade limiteCompraPorPessoa detalhes avaliacao status 
-oferta2cotaMinima descontoOferecido preco regulamento validade limiteCompraPorPessoa detalhes avaliacao aceita 
-oferta3 cotaMinima descontoOferecido preco regulamento validade limiteCompraPorPessoa detalhes avaliacao aceita 
-oferta4 cotaMinima descontoOferecido preco regulamento validade limiteCompraPorPessoa detalhes avaliacao status 
+b1 b2 b3 b4 b5 b6 b7 b8 neutra aceita 
+Oferta_teste 200 300 130 Só_para_sanduiches julho_a_agosto 1 necessita_agendamento neutra oferta_do_dia 
