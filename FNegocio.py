@@ -38,9 +38,9 @@ class FNegocio:
          lOferta = LOferta.LOferta()
          return lOferta.getOferta(nomeOferta)
          
-     def telaPrincipalExibeOfertaDia(self):
+     def getOfertaDoDia(self):
          lOferta = LOferta.LOferta()
-         lOferta.exibe_oferta_do_dia()
+         return lOferta.ofertaDoDia()
 
      
      #def exibeDadosCompraConsumidor(self):

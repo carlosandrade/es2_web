@@ -25,7 +25,28 @@ def imprime_tabela_de_dados():
     print "\t</TABLE>\n"
     
 
-    fNegocio.telaPrincipalExibeOfertaDia()
+    ofertaDoDia = fNegocio.getOfertaDoDia()
+    print "\t<H3>Oferta do dia:<H3>\n"
+    print "\t<TABLE BORDER = 0> \n"
+
+    print "\t\t<TR><TH>Nome da oferta: </TH><TH>",ofertaDoDia.nome,"</TH><TR>\n"
+
+    print "\t\t<TR><TH>Cota minima: </TH><TH>",ofertaDoDia.cota_minima,"</TH><TR>\n"
+
+    print "\t\t<TR><TH>Preco: </TH><TH>",ofertaDoDia.preco,"</TH></TR>\n"
+
+    print "\t\t<TR><TH>Desconto oferecido: </TH><TH>",ofertaDoDia.desconto,"</TH></TR>\n"
+
+    print "\t\t<TR><TH>Regulamento: </TH><TH>",ofertaDoDia.regulamento,"</TH></TR>\n"
+
+    print "\t\t<TR><TH>Validade: </TH><TH>",ofertaDoDia.validade,"</TH></TR>\n"
+
+    print "\t\t<TR><TH>Limite de cupons por pessoa: </TH><TH>",ofertaDoDia.limite,"</TH></TR>\n"
+
+    print "\t\t<TR><TH>Detalhes:</TH><TH>",ofertaDoDia.detalhes,"</TH></TR>\n"
+
+    print "\t</TABLE>\n"
+    
 
 
 

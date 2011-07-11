@@ -37,35 +37,16 @@ class LOferta:
         mCupom.save()
         
 
-    def exibe_oferta_do_dia(self):
+    def ofertaDoDia(self):
          oferta = MOferta.Oferta()
          ofertas = oferta.openAll()
+ 
          for i in range(len(ofertas)):
              campoOfertas = string.split(ofertas[i]," ")
              if (campoOfertas[9] == "oferta_do_dia"):
-                 oferta.open(campoOfertas[0])
-                 print "\t<H3>Oferta do dia:<H3>\n"
-                 print "\t<TABLE BORDER = 0> \n"
-
-                 print "\t\t<TR><TH>Nome da oferta: </TH><TH>",oferta.nome,"</TH><TR>\n"
-
-                 print "\t\t<TR><TH>Cota minima: </TH><TH>",oferta.cota_minima,"</TH><TR>\n"
- 
-                 print "\t\t<TR><TH>Preco: </TH><TH>",oferta.preco,"</TH></TR>\n"
-
-                 print "\t\t<TR><TH>Desconto oferecido: </TH><TH>",oferta.desconto,"</TH></TR>\n"
-
-                 print "\t\t<TR><TH>Regulamento: </TH><TH>",oferta.regulamento,"</TH></TR>\n"
-
-                 print "\t\t<TR><TH>Validade: </TH><TH>",oferta.validade,"</TH></TR>\n"
-
-                 print "\t\t<TR><TH>Limite de cupons por pessoa: </TH><TH>",oferta.limite,"</TH></TR>\n"
-
-                 print "\t\t<TR><TH>Detalhes:</TH><TH>",oferta.detalhes,"</TH></TR>\n"
-
-                 print "\t</TABLE>\n"
-
-            
+                 ofertaDoDia = oferta.open(campoOfertas[0])
+                 
+         return ofertaDoDia
         
 
     def salvaOferta(self,nome,cota_minima,preco,desconto,regulamento,validade,limite,detalhes):
@@ -88,4 +69,3 @@ class LOferta:
         oferta = MOferta.Oferta()
         oferta = oferta.open(nomeOferta)
         return oferta
-
