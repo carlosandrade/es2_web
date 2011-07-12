@@ -8,12 +8,12 @@ sys.path.append("/Library/WebServer/CGI-Executables/Tela")
 import cgi, cgitb, string
 cgitb.enable()
 
-def default():
+def default(form):
 
     print "Content-type:text/html\r\n\r\n"
     print "<HTML>\n"
     print "<HEAD>\n"
-    print "\t<TITLE>Indicar Amigo</TITLE>\n"
+    print "\t<TITLE>Recomendar Oferta</TITLE>\n"
     print "</HEAD>\n"
     print "<BODY BGCOLOR = white>\n"
 
@@ -23,12 +23,15 @@ def default():
     \"/cgi-bin/FNegocio.py\">\n"
 
     print "\t<INPUT TYPE=HIDDEN NAME = \"action\" VALUE = \
-    \"TIndicarAmigo\">\n"
+    \"TRecomendarOferta\">\n"
 
     print "\t\tEmail do seu amigo:</TH><TD><INPUT type = text \
     name = \"email\"> <br />\n"
 
-    print "\t\tMensagem: <br /><textarea rows=\"30\" name=\"mensagem\" cols=\"40\">"
+    if form.has_key("mensagem"):
+        print "\t\tMensagem: <br /><textarea rows=\"30\" name=\"mensagem\" cols=\"40\" >%s" % (form["mensagem"].value)
+    else:
+        print "\t\tMensagem: <br /><textarea rows=\"30\" name=\"mensagem\" cols=\"40\" >"
     print "</textarea>\n"
 
 
@@ -61,9 +64,9 @@ def main():
         #elif form["update"].value == "exibeOfertaRecusada":
         #    ofertaRecusadacomSucesso()
         else:
-            default()                                            
+            default(form)                                            
     else:  
-        default()
+        default(form)
 
 
     

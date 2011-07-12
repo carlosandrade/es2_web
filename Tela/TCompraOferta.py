@@ -81,7 +81,7 @@ def default(form):
     #print "\t</TABLE>\n"
     
     if quantidade_compra == 0 :
-        print "Sentimos muito, mas a oferta esta esgotada!! Verifique em breve!"
+        print "Sentimos muito, mas a oferta esta esgotada!! Verifique em breve!" 
     else:
         print "\t\t<SELECT NAME = \"dropdown\">"
 
@@ -89,6 +89,7 @@ def default(form):
             print "\t\t<OPTION VALUE=\"%s\">%s</ OPTION >" % (i,i)                
             print "\t\t</SELECT>"
             print "\t<INPUT TYPE = submit NAME = \"check\" VALUE = \"Comprar oferta\">\n"
+    print "\t<INPUT TYPE = submit NAME = \"check\" VALUE = \"Recomendar oferta\">\n"
     print "\t</FORM>\n"
   
     print "</BODY>\n"
