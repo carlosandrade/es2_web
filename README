@@ -1,5 +1,21 @@
 - Tres camadas
+	Print somente em classes da pasta Tela
+	Organizacao das tres camadas nas pastas Tela, Logica e Model, alem de Banco (persistencia)
 - Padrao façade
-
-- Tela de cadastro de Empresa
-- Tela de login 
+	- FNegocio
+- Casos de usos concluidos
+	Empresa
+		- Cadastrar no site
+		- Submeter oferta
+	Administrador
+		- Submeter oferta (Aceita, recusada, modificacoes)
+		- Escolher oferta do dia
+		
+	Consumidor
+		- Cadastrar no site
+		- Indicar amigos
+		- Recomendar oferta (por email)
+		- Comprar oferta (ainda nao inclui para presente) (ainda n subtrai credito ou cartao de credito do cliente)
+		- Enviar Sugestoes/Reclamacoes
+		- Visualizar Sugestoes/Reclamacoes (Extra, nao estava no diagrama de caso de uso)
+		
