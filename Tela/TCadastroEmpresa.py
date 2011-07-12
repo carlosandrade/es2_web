@@ -58,7 +58,7 @@ def default():
 
 
 
-    print "\t<INPUT TYPE = submit NAME = \"check\" VALUE = \"visualizar\">\n"
+#    print "\t<INPUT TYPE = submit NAME = \"check\" VALUE = \"visualizar\">\n"
     print "\t<INPUT TYPE = submit NAME = \"check\" VALUE = \"cadastrar\">\n"
     print "\t</FORM>\n"
 

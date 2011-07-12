@@ -23,16 +23,16 @@ class LEmpresa:
                 if form["check"].value == "cadastrar":
 	                self.salvaEmpresa(form["business_name"].value, form["business_cnpj"].value, form["business_email"].value,form["business_login"].value, form["business_password"].value)
 
-    def exibeCadastro(self, name, cnpj, email):
-        print "Content-type:text/html\r\n\r\n"
-        print "<html>"
-        print "<head>"
-        print "<title>Hello - Second CGI Program</title>"
-        print "</head>"
-        print "<body>"
-        print "<h2>Hello %s %s %s</h2>" % (name, cnpj,email)
-        print "</body>"
-        print "</html>"
+#    def exibeCadastro(self, name, cnpj, email):
+#        print "Content-type:text/html\r\n\r\n"
+#        print "<html>"
+#        print "<head>"
+#        print "<title>Hello - Second CGI Program</title>"
+#        print "</head>"
+ #       print "<body>"
+ #       print "<h2>Hello %s %s %s</h2>" % (name, cnpj,email)
+ #       print "</body>"
+ #       print "</html>"
 
     def salvaEmpresa(self,name,cnpj,email,login,password):
         
