@@ -61,7 +61,7 @@ def main():
             fNegocio.logicaAdministrador(form)
         elif (form["action"].value == "TSubmissaoOferta") or (form["action"].value == "TCompraOferta"):
             fNegocio.logicaOferta(form)
-        elif form["action"].value == "TCadastroConsumidor":
+        elif form["action"].value == "TCadastroConsumidor" or (form["action"].value == "TEnviarSugestao"):
             fNegocio.logicaConsumidor(form)
         elif form["action"].value == "TPrincipal":
             print "Content-type:text/html\r\n\r\n"

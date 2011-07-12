@@ -2,7 +2,7 @@
 
 # Import modules for CGI handling 
 import cgi, cgitb
-import MConsumidor, MUsuario
+import MConsumidor, MUsuario,MSugestao
 import Cookie, os
 cgitb.enable()
 
@@ -16,7 +16,17 @@ class LConsumidor:
             if form.has_key("action"):
                 if form["action"].value == "TCadastroConsumidor":
 	                self.salvaConsumidor(form["nome"].value, form["email"].value, form["ncartao"].value, form["tipoCartao"].value, form["login"].value, form["password"].value)
+                if form["action"].value == "TEnviarSugestao":
+	                self.salvaSugestao(form["titulo"].value, form["mensagem"].value)
+	                
 
+    def salvaSugestao(self,titulo, mensagem):
+        sugestao = MSugestao.Sugestao(titulo,mensagem)
+        sugestao.save()
+        print "Content-type:text/html\r\n\r\n"
+        print "<meta HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=/cgi-bin/TEnviarSugestao.py?update=exibeSugestaoSalva\">"
+        
+        
 
 #    def exibeDadosConsumidor(self):
 #         a_cookie = Cookie.Cookie( os.environ.get("HTTP_COOKIE", "") )
@@ -35,8 +45,8 @@ class LConsumidor:
         
         consumidor = MConsumidor.Consumidor(nome,email,ncartao,tipoCartao,login,password)
         consumidor.save()
-	usuario = MUsuario.Usuario("consumidor",login,password)
-	usuario.save()
+        usuario = MUsuario.Usuario("consumidor",login,password)
+        usuario.save()
         print "Content-type:text/html\r\n\r\n"
         print "<html>"
         print "<head>"
