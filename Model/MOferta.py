@@ -11,7 +11,7 @@ cgitb.enable()
 
 class Oferta:
  
-    def __init__(self,nome="",cota_minima="",preco="",desconto="",regulamento="",validade="",limite="",detalhes="",reputacao="neutra",avaliacao="pendente"):
+    def __init__(self,nome="",cota_minima="",preco="",desconto="",regulamento="",validade="",limite="",detalhes="",quantidade=""):
         self.nome = nome
         self.cota_minima = cota_minima
         self.preco = preco
@@ -20,13 +20,14 @@ class Oferta:
         self.validade = validade
         self.limite = limite
         self.detalhes = detalhes
-        self.reputacao = reputacao
-        self.avaliacao = avaliacao
+        self.reputacao = "neutra"
+        self.avaliacao = "pendente"
+        self.quantidade = quantidade
 
 
     def save(self):
         file = open("/Library/WebServer/CGI-Executables/Banco/ofertas.txt","a+")
-        file.write(self.nome+" "+self.cota_minima+" "+self.preco+" "+self.desconto+" "+self.regulamento+" "+self.validade+" "+self.limite+" "+self.detalhes+" "+self.reputacao+" "+self.avaliacao+" \n")
+        file.write(self.nome+" "+self.cota_minima+" "+self.preco+" "+self.desconto+" "+self.regulamento+" "+self.validade+" "+self.limite+" "+self.detalhes+" "+self.reputacao+" "+self.avaliacao+" "+self.quantidade+" \n")
         file.close()
 
     def openAll(self):

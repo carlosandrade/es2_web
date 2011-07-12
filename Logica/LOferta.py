@@ -20,7 +20,7 @@ class LOferta:
        if form != "":
            if form.has_key("action"):
                if form["action"].value == "TSubmissaoOferta":
-		           self.salvaOferta(form["oferta_nome"].value, form["cota_minima"].value, form["preco"].value, form["desconto"].value,form["regulamento"].value,form["validade"].value,form["limite"].value,form["detalhes"].value)
+		           self.salvaOferta(form["oferta_nome"].value, form["cota_minima"].value, form["preco"].value, form["desconto"].value,form["regulamento"].value,form["validade"].value,form["limite"].value,form["detalhes"].value,form["quantidade"].value)
                elif form["action"].value == "TCompraOferta":
                    a_cookie = Cookie.Cookie( os.environ.get("HTTP_COOKIE", "") )
                    oferta = self.getOferta(form["nome_oferta"].value)
@@ -62,21 +62,13 @@ class LOferta:
          return ofertaDoDia
         
 
-    def salvaOferta(self,nome,cota_minima,preco,desconto,regulamento,validade,limite,detalhes):
+    def salvaOferta(self,nome,cota_minima,preco,desconto,regulamento,validade,limite,detalhes,quantidade):
 
-        oferta = MOferta.Oferta(nome,cota_minima,preco,desconto,regulamento,validade,limite,detalhes)
+        oferta = MOferta.Oferta(nome,cota_minima,preco,desconto,regulamento,validade,limite,detalhes,quantidade)
         oferta.save()
         print "Content-type:text/html\r\n\r\n"
-        print "<html>"
-        print "<head>"
-        print "<title>Hello - Second CGI Program</title>"
-        print "</head>"
-        print "<body>"
-        print "<h2>Os dados da oferta",nome,"foram cadastrados com sucesso</h2>\n"
-        print "<p>O que deseja fazer agora?\n<p>"
-        print " <a href=\"TSubmissaoOferta.py\">Retornar a tela de submissao de oferta</a>"
-        print "</body>"
-        print "</html>"
+        print "<meta HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=/cgi-bin/Tela/TSubmissaoOferta.py?update=exibeOfertaSubmetidaComSucesso\">"
+
 
     def getOferta(self,nomeOferta):
         oferta = MOferta.Oferta()

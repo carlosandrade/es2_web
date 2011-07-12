@@ -1,2 +1,3 @@
 b1 b2 b3 b4 b5 b6 3 b8 neutra aceita 0 
 Oferta_teste 200 300 130 Só_para_sanduiches julho_a_agosto 1 necessita_agendamento neutra oferta_do_dia 4 
+nome1 cota1 preco1 desconto1 regulamento1 20/30/2011 4 detalhes1 neutra pendente 20 
