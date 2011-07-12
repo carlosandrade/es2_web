@@ -18,20 +18,20 @@ class Cupom:
 
 
     def save(self):
-        file = open("cupoms.txt","a+")
+        file = open("Banco/cupoms.txt","a+")
         file.write(self.nomeConsumidor+" "+self.nomeOferta+" "+self.validade+" \n")
         file.close()
 
     def openAll(self):
-        file = open("cupoms.txt","r+")
+        file = open("Banco/cupoms.txt","r+")
         cupoms = file.readlines()
         file.close()
         return cupoms
 
     def saveAll(self,cupoms):
-        file = open("cupoms.txt","w")
+        file = open("Banco/cupoms.txt","w")
         file.close
-        file = open("cupoms.txt","a+")
+        file = open("Banco/cupoms.txt","a+")
         for cupom in cupoms:
             file.write(cupom)
         file.close()

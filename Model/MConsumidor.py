@@ -20,7 +20,7 @@ class Consumidor:
         self.password = password
       
     def save(self):
-        file = open("consumidor.txt","a+")
+        file = open("Banco/consumidor.txt","a+")
         file.write(self.nome+" "+self.login+" "+self.password+" "+self.email+" "+self.ncartao+" "+self.tipoCartao+" \n")
         file.close()
 
@@ -32,7 +32,7 @@ class Consumidor:
                 self.nome,self.login,self.password,self.email,self.ncartao,self.tipoCartao,enter = campoConsumidor
                
     def openAll(self):
-        file = open("consumidor.txt","r+")
+        file = open("Banco/consumidor.txt","r+")
         consumidores = file.readlines()
         file.close()
         return consumidores

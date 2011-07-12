@@ -19,26 +19,26 @@ class Usuario:
 
 
     def save(self):
-        file = open("usuarios.txt","a+")
+        file = open("Banco/usuarios.txt","a+")
         file.write(self.login+" "+self.senha+" "+self.tipo+" \n")
         file.close()
 
     def openAll(self):
-        file = open("usuarios.txt","r+")
+        file = open("Banco/usuarios.txt","r+")
         usuarios = file.readlines()
         file.close()
         return usuarios
 
     def saveAll(self,usuarios):
-        file = open("usuarios.txt","w")
+        file = open("Banco/usuarios.txt","w")
         file.close
-        file = open("usuarios.txt","a+")
+        file = open("Banco/usuarios.txt","a+")
         for usuario in usuarios:
             file.write(usuario)
         file.close()
 
     def open(self,nomeUsuario):
-        file = open("usuarios.txt","r+")
+        file = open("Banco/usuarios.txt","r+")
       	usuarios = file.readlines()
         file.close()
         for usuario in usuarios:
