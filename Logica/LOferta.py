@@ -7,7 +7,7 @@ sys.path.append("/Library/WebServer/CGI-Executables/Logica")
 sys.path.append("/Library/WebServer/CGI-Executables/Model")
 sys.path.append("/Library/WebServer/CGI-Executables/Tela")
 import cgi, cgitb, os, Cookie
-import MOferta
+import MOferta, MCupom
 import string
 cgitb.enable()
 
@@ -24,7 +24,7 @@ class LOferta:
                elif form["action"].value == "TCompraOferta":
                    a_cookie = Cookie.Cookie( os.environ.get("HTTP_COOKIE", "") )
                    oferta = self.getOferta(form["nome_oferta"].value)
-                   self.compraOferta(a_cookie["login"].value,form["nome_oferta"].value,oferta.validade)
+                   self.compraOferta(a_cookie["login"].value,form["nome_oferta"].value,oferta.validade,form["dropdown"].value)
            
     def compraOferta(self,nomeComprador,nomeOferta,validadeOferta,quantidade):
         mOferta = MOferta.Oferta()
@@ -32,12 +32,20 @@ class LOferta:
         for i in range(len(ofertas)):
             campoOferta = string.split(ofertas[i], " ")
             if campoOferta[0] == nomeOferta:
-                campoOferta[10] = campoOferta[10] - quantidade
+                campoOferta[10] = str(int(campoOferta[10]) - int(quantidade)) #transforma string em inteiro, subtrai e transforma em string o resultado
+                ofertas[i] =""
+                for j in range(len(campoOferta)):
+                    if campoOferta[j] != "\n":
+		                ofertas[i] += campoOferta[j]+" "
+                    else:
+                       ofertas[i] += campoOferta[j]
         mOferta.saveAll(ofertas)
-        criaCupom(nomeOferta,validadeOferta,nomeComprador)
+        self.criaCupom(nomeOferta,validadeOferta,nomeComprador)
+        print "Content-type:text/html\r\n\r\n"
+        print "<meta HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=/cgi-bin/Tela/TCompraOferta.py?update=exibeCompraRealizada\">"
 
 
-    def criaCupom(nomeOferta,validadeOferta,nomeComprador):
+    def criaCupom(self,nomeOferta,validadeOferta,nomeComprador):
         mCupom = MCupom.Cupom(nomeOferta,validadeOferta,nomeComprador)
         mCupom.save()
         

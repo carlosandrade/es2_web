@@ -18,20 +18,20 @@ class Cupom:
 
 
     def save(self):
-        file = open("Banco/cupoms.txt","a+")
+        file = open("/Library/WebServer/CGI-Executables/Banco/cupoms.txt","a+")
         file.write(self.nomeConsumidor+" "+self.nomeOferta+" "+self.validade+" \n")
         file.close()
 
     def openAll(self):
-        file = open("Banco/cupoms.txt","r+")
+        file = open("/Library/WebServer/CGI-Executables.Banco/cupoms.txt","r+")
         cupoms = file.readlines()
         file.close()
         return cupoms
 
     def saveAll(self,cupoms):
-        file = open("Banco/cupoms.txt","w")
+        file = open("/Library/WebServer/CGI-Executables/Banco/cupoms.txt","w")
         file.close
-        file = open("Banco/cupoms.txt","a+")
+        file = open("/Library/WebServer/CGI-Executables/Banco/cupoms.txt","a+")
         for cupom in cupoms:
             file.write(cupom)
         file.close()

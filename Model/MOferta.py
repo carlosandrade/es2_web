@@ -25,26 +25,26 @@ class Oferta:
 
 
     def save(self):
-        file = open("Banco/ofertas.txt","a+")
+        file = open("/Library/WebServer/CGI-Executables/Banco/ofertas.txt","a+")
         file.write(self.nome+" "+self.cota_minima+" "+self.preco+" "+self.desconto+" "+self.regulamento+" "+self.validade+" "+self.limite+" "+self.detalhes+" "+self.reputacao+" "+self.avaliacao+" \n")
         file.close()
 
     def openAll(self):
-        file = open("Banco/ofertas.txt","r+")
+        file = open("/Library/WebServer/CGI-Executables/Banco/ofertas.txt","r+")
         ofertas = file.readlines()
         file.close()
         return ofertas
 
     def saveAll(self,ofertas):
-        file = open("Banco/ofertas.txt","w")
+        file = open("/Library/WebServer/CGI-Executables/Banco/ofertas.txt","w")
         file.close
-        file = open("Banco/ofertas.txt","a+")
+        file = open("/Library/WebServer/CGI-Executables/Banco/ofertas.txt","a+")
         for oferta in ofertas:
             file.write(oferta)
         file.close()
 
     def open(self,nomeOferta):
-        file = open("Banco/ofertas.txt","r+")
+        file = open("/Library/WebServer/CGI-Executables/Banco/ofertas.txt","r+")
         ofertas = file.readlines()
         file.close()
         for oferta in ofertas:

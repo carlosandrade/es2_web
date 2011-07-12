@@ -16,20 +16,20 @@ class Sugestao:
         self.mensagem = mensagem
 
     def save(self):
-        file = open("Banco/sugestoes.txt","a+")
+        file = open("/Library/WebServer/CGI-Executables/Banco/sugestoes.txt","a+")
         file.write(self.titulo+" "+self.mensagem+" \n")
         file.close()
 
     def openAll(self):
-        file = open("Banco/sugestoes.txt","r+")
+        file = open("/Library/WebServer/CGI-Executables/Banco/sugestoes.txt","r+")
         sugestoes = file.readlines()
         file.close()
         return sugestoes
 
     def saveAll(self,sugestoes):
-        file = open("Banco/sugestoes.txt","w")
+        file = open("/Library/WebServer/CGI-Executables/Banco/sugestoes.txt","w")
         file.close
-        file = open("Banco/sugestoes.txt","a+")
+        file = open("/Library/WebServer/CGI-Executables/Banco/sugestoes.txt","a+")
         for sugestao in sugestoes:
             file.write(sugestao)
         file.close()

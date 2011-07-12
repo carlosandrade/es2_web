@@ -8,6 +8,7 @@ sys.path.append("/Library/WebServer/CGI-Executables/Model")
 sys.path.append("/Library/WebServer/CGI-Executables/Tela")
 import cgi, cgitb, string
 import FNegocio
+import TCompraOferta
 cgitb.enable() 
 
 def imprime_tabela_de_dados():
@@ -34,6 +35,7 @@ def imprime_tabela_de_dados():
 
     ofertaDoDia = fNegocio.getOfertaDoDia()
     print "\t<H3>Oferta do dia:<H3>\n"
+    
     print "\t<TABLE BORDER = 0> \n"
     print "\t\t<FORM METHOD = post ACTION = \
        \"/cgi-bin/Tela/TCompraOferta.py\">\n"

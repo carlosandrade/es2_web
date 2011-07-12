@@ -72,7 +72,7 @@ def main():
             fNegocio.logicaAdministrador(form)
         elif (form["action"].value == "TSubmissaoOferta") or (form["action"].value == "TCompraOferta"):
             fNegocio.logicaOferta(form)
-        elif form["action"].value == "TCadastroConsumidor" or (form["action"].value == "TEnviarSugestao"):
+        elif form["action"].value == "TCadastroConsumidor" or (form["action"].value == "TEnviarSugestao") or (form["action"].value == "TIndicarAmigo"):
             fNegocio.logicaConsumidor(form)
         elif form["action"].value == "TPrincipal":
             print "Content-type:text/html\r\n\r\n"
@@ -82,8 +82,9 @@ def main():
                 print "<meta HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=/cgi-bin/Tela/TCadastroConsumidor.py\">"
             elif form["check"].value == "Cadastrar(Empresa)":
                 print "<meta HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=/cgi-bin/Tela/TCadastroEmpresa.py\">"
-            elif form["check"].value == "Compre Agora!":
-                print "<meta HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=/cgi-bin/Tela/TCompraOferta.py\">"
+            #elif form["check"].value == "Compre Agora!":
+                #print "<meta HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=/cgi-bin/Tela/TCompraOferta.py\">"
+                #print "wohoo"
                             
                     
         else:  

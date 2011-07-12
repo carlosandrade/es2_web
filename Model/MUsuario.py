@@ -19,26 +19,26 @@ class Usuario:
 
 
     def save(self):
-        file = open("Banco/usuarios.txt","a+")
+        file = open("/Library/WebServer/CGI-Executables/Banco/usuarios.txt","a+")
         file.write(self.login+" "+self.senha+" "+self.tipo+" \n")
         file.close()
 
     def openAll(self):
-        file = open("Banco/usuarios.txt","r+")
+        file = open("/Library/WebServer/CGI-Executables/Banco/usuarios.txt","r+")
         usuarios = file.readlines()
         file.close()
         return usuarios
 
     def saveAll(self,usuarios):
-        file = open("Banco/usuarios.txt","w")
+        file = open("/Library/WebServer/CGI-Executables/Banco/usuarios.txt","w")
         file.close
-        file = open("Banco/usuarios.txt","a+")
+        file = open("/Library/WebServer/CGI-Executables/Banco/usuarios.txt","a+")
         for usuario in usuarios:
             file.write(usuario)
         file.close()
 
     def open(self,nomeUsuario):
-        file = open("Banco/usuarios.txt","r+")
+        file = open("/Library/WebServer/CGI-Executables/Banco/usuarios.txt","r+")
       	usuarios = file.readlines()
         file.close()
         for usuario in usuarios:
