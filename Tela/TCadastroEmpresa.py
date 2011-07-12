@@ -5,8 +5,31 @@ sys.path.append("/Library/WebServer/CGI-Executables/")
 sys.path.append("/Library/WebServer/CGI-Executables/Logica")
 sys.path.append("/Library/WebServer/CGI-Executables/Model")
 sys.path.append("/Library/WebServer/CGI-Executables/Tela")
+import cgi, cgitb
 
-def imprime_tabela_de_dados():
+
+def empresaCadastradaComSucesso():
+    print "Content-type:text/html\r\n\r\n"
+    print "<html>"
+    print "<head>"
+    print "<title>Empresa cadastrada com sucesso</title>"
+    print "</head>"
+    print "<body>"
+    print "<h2>Empresa cadastrada com sucesso!</h2>\n"
+    print "<p>O que deseja fazer agora?\n<p>"
+    print " <a 	href=\"TCadastroEmpresa.py\">Retornar a tela de cadastro de empresa</a>"
+    print "</body>"
+    print "</html>"
+
+
+def default():
+    print "Content-type:text/html\r\n\r\n"
+    print "<HTML>\n"
+    print "<HEAD>\n"
+    print "\t<TITLE>Cadastro da Empresa</TITLE>\n"
+    print "</HEAD>\n"
+    print "<BODY BGCOLOR = white>\n"
+
     print "\t<H3>Favor digitar Nome da empresa, cnpj e e-mail<H3>\n"
     print "\t<TABLE BORDER = 0> \n"
     print "\t\t<FORM METHOD = post ACTION = \
@@ -39,18 +62,19 @@ def imprime_tabela_de_dados():
     print "\t<INPUT TYPE = submit NAME = \"check\" VALUE = \"cadastrar\">\n"
     print "\t</FORM>\n"
 
-
-def main():
-    print "Content-type:text/html\r\n\r\n"
-    print "<HTML>\n"
-    print "<HEAD>\n"
-    print "\t<TITLE>Cadastro da Empresa</TITLE>\n"
-    print "</HEAD>\n"
-    print "<BODY BGCOLOR = white>\n"
-
-    imprime_tabela_de_dados()
-
     print "</BODY>\n"
     print "</HTML>\n"	
 	
+def main():
+    form = cgi.FieldStorage()
+    if form.has_key("update"):
+        if form["update"].value == "exibeEmpresaCadastradaComSucesso":
+            empresaCadastradaComSucesso()
+#        elif form["update"].value == "exibeOfertaRecusada":
+#            ofertaRecusadacomSucesso()
+        else:
+            default()                                            
+    else:  
+        default()   
+    
 main()
