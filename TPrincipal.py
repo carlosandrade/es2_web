@@ -11,7 +11,7 @@ def imprime_tabela_de_dados():
     print "\t<H1>ComprOn<H1>\n"
     print "\t<TABLE BORDER = 0> \n"
     print "\t\t<FORM METHOD = post ACTION = \
-    \"/cgi-bin/TCompraOferta.py\">\n"
+    \"/cgi-bin/FNegocio.py\">\n"
 
     print "\t<INPUT TYPE=HIDDEN NAME = \"action\" VALUE = \
     \"TPrincipal\">\n"
@@ -22,12 +22,18 @@ def imprime_tabela_de_dados():
     
     print "\t<INPUT TYPE = submit NAME = \"check\" VALUE = \"Login\">\n"
     
-    print "\t</TABLE>\n"
+    print "\t</TABLE>\n" 
     
+    print "\t</FORM>\n"  
 
     ofertaDoDia = fNegocio.getOfertaDoDia()
     print "\t<H3>Oferta do dia:<H3>\n"
     print "\t<TABLE BORDER = 0> \n"
+    print "\t\t<FORM METHOD = post ACTION = \
+       \"/cgi-bin/TCompraOferta.py\">\n"
+       
+    print "\t<INPUT TYPE=HIDDEN NAME = \"action\" VALUE = \
+         \"TPrincipal\">\n"
 
     print "\t\t<TR><TH>Nome da oferta: </TH><TH>",ofertaDoDia.nome,"</TH><TR>\n"
 
@@ -48,9 +54,10 @@ def imprime_tabela_de_dados():
     print "\t</TABLE>\n"
     
 
-
-
     print "\t<INPUT TYPE = submit NAME = \"check\" VALUE = \"Compre Agora!\">\n"
+    
+    
+    
     print "\t\n<H3>Outras Ofertas<H3>\n"
 
     ofertasDropdown = fNegocio.administradorDropOfertasPendentes()
@@ -62,7 +69,7 @@ def imprime_tabela_de_dados():
     print "\t\t</SELECT>"
     print "\t<INPUT TYPE = submit NAME = \"check\" VALUE = \"Compre Tambem!\">\n"
 	
-    print "\t</FORM>\n"    
+    print "\t</FORM>\n"  
 
 
         

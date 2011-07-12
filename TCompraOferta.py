@@ -8,6 +8,9 @@ cgitb.enable()
 
 def main(): 
     form = cgi.FieldStorage()    
+    if form["action"].value == "TPrincipal":
+        print "bla"
+        
     print "Content-type:text/html\r\n\r\n"
     print "<HTML>\n"
     print "<HEAD>\n"
@@ -23,6 +26,8 @@ def main():
 
     print "\t\t<FORM METHOD = post ACTION = \
     \"/cgi-bin/FNegocio.py\">\n"
+    
+    print form["action"].value
     
     print "\t<INPUT TYPE=HIDDEN NAME = \"nome_oferta\" VALUE = \
     \"%s\">\n" % (form["dropdown"].value)
