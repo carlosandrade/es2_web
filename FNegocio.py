@@ -34,6 +34,10 @@ class FNegocio:
          lAdministrador = LAdministrador.LAdministrador()
          return lAdministrador.getDadosOfertasPendentes()
          
+     def administradorGetSugestoes(self):
+         lAdministrador = LAdministrador.LAdministrador()
+         return lAdministrador.getSugestoes()
+         
      def getOferta(self,nomeOferta):
          lOferta = LOferta.LOferta()
          return lOferta.getOferta(nomeOferta)

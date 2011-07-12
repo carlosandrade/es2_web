@@ -3,7 +3,7 @@
 # Import modules for CGI handling 
 import cgi, cgitb
 import MEmpresa, Cookie, os, string
-import MOferta
+import MOferta, MSugestao
 
 cgitb.enable()
 
@@ -20,6 +20,7 @@ class LAdministrador:
                    self.modificaOferta(form["dropdown"].value)
                elif form["check"].value == "oferta do dia":
                    self.diaOferta(form["dropdown"].value)
+            
 
        #else:
        #    a_cookie = Cookie.Cookie( os.environ.get("HTTP_COOKIE", "") )
@@ -116,6 +117,10 @@ class LAdministrador:
     def getDadosOfertasPendentes(self):
         mOferta = MOferta.Oferta()
         return mOferta.openAll()
+        
+    def getSugestoes(self):
+        mSugestoes = MSugestao.Sugestao()
+        return mSugestoes.openAll()        
 
     def DropOfertasPendentes(self):
         mOferta = MOferta.Oferta()
