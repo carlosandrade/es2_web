@@ -17,11 +17,8 @@ class LUsuario:
         if form.has_key("action"):
             if (form["action"].value == "TLogin"):
                 result = self.test(form["login"].value, form["password"].value)
-                if result != "passed":
-                    self.display_page(result)
-                else:    
-                    tipo = self.tipoUsuario(form["login"].value)
-                    self.set_client_Cookie(tipo,form["login"].value)
+                self.exibeResultadoAutenticacao(result,form["login"].value)
+                    
 
 	# Define function to test the password.
     def test(self,login, password):
@@ -58,20 +55,20 @@ class LUsuario:
             a_cookie["password"] = consumidor.password
             
             # Required header that tells the browser how to render the HTML.
-            print "Content-Type: text/html"
+#            print "Content-Type: text/html"
 
 		    # Send the cookie back to the client.
-            print a_cookie, "\n\n"
+#            print a_cookie, "\n\n"
 
 		    # Print the cookie value.
-            print "<HTML><BODY>"
-            print "Bem vinda, ",consumidor.nome, "\n"
-            print "<FORM METHOD = post ACTION = \"TMinhaConta.py\">\n"
-            print "<INPUT TYPE = \"hidden\" NAME = \
-            \"set\" VALUE =\"yes\">\n"
-            print "<INPUT TYPE = \"submit\" VALUE = \"Continuar\"></FORM>\n"
-            print "</BODY></HTML>\n"
-            print
+#            print "<HTML><BODY>"
+#            print "Bem vinda, ",consumidor.nome, "\n"
+#            print "<FORM METHOD = post ACTION = \"TMinhaConta.py\">\n"
+#            print "<INPUT TYPE = \"hidden\" NAME = \
+#            \"set\" VALUE =\"yes\">\n"
+#            print "<INPUT TYPE = \"submit\" VALUE = \"Continuar\"></FORM>\n"
+#            print "</BODY></HTML>\n"
+#            print
 
             
 
@@ -125,16 +122,9 @@ class LUsuario:
 
 
     # Define function display_page.
-    def display_page(self,result):
-        print "Content-type:text/html\r\n\r\n"
-        print "<HTML>\n"
-        print "<HEAD>\n"
-        print "\t<TITLE>Info Form</TITLE>\n"
-        print "</HEAD>\n"
-        print "<BODY BGCOLOR = white>\n"
+    def exibeResultadoAutenticacao(self,result,login):
+        tipo = self.tipoUsuario(login)
         if result == "passed":
-            print "Senha correta.\n"
-        else:
-            print "Senha incorreta, favor tentar novamente.\n"
-        print "</BODY>\n"
-        print "</HTML>\n"
+            self.set_client_Cookie(tipo,login)
+        print "Content-type:text/html\r\n\r\n"
+        print "<meta HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=/cgi-bin/Tela/TLogin.py?update=%s\">" % (result)

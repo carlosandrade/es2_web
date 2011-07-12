@@ -10,8 +10,29 @@ sys.path.append("/Library/WebServer/CGI-Executables/Tela")
 import cgi, cgitb
 cgitb.enable() 
 
-# Define function to generate HTML form.
-def main():
+def loginPassou():
+    print "Content-type:text/html\r\n\r\n"
+    print "<HTML>\n"
+    print "<HEAD>\n"
+    print "\t<TITLE>Info Form</TITLE>\n"
+    print "</HEAD>\n"
+    print "<BODY BGCOLOR = white>\n"
+    print "Senha correta. Usuario autenticado.\n"
+    print "</BODY>\n"
+    print "</HTML>\n"
+
+def loginFalhou():
+    print "Content-type:text/html\r\n\r\n"
+    print "<HTML>\n"
+    print "<HEAD>\n"
+    print "\t<TITLE>Info Form</TITLE>\n"
+    print "</HEAD>\n"
+    print "<BODY BGCOLOR = white>\n"
+    print "Senha incorreta, favor tentar novamente.\n"
+    print "</BODY>\n"
+    print "</HTML>\n"   
+
+def default():
     print "Content-type:text/html\r\n\r\n"
     print "<HTML>\n"
     print "<HEAD>\n"
@@ -37,4 +58,16 @@ def main():
     print "</BODY>\n"
     print "</HTML>\n"
 
+def main():
+    form = cgi.FieldStorage()
+    if form.has_key("update"):
+        if form["update"].value == "passed":
+            loginPassou()
+        elif form["update"].value == "failed":
+            loginFalhou()
+        else:
+            default()                                            
+    else:  
+        default()
+    
 main()
