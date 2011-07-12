@@ -22,9 +22,24 @@ class LOferta:
                if form["action"].value == "TSubmissaoOferta":
 		           self.salvaOferta(form["oferta_nome"].value, form["cota_minima"].value, form["preco"].value, form["desconto"].value,form["regulamento"].value,form["validade"].value,form["limite"].value,form["detalhes"].value,form["quantidade"].value)
                elif form["action"].value == "TCompraOferta":
-                   a_cookie = Cookie.Cookie( os.environ.get("HTTP_COOKIE", "") )
-                   oferta = self.getOferta(form["nome_oferta"].value)
-                   self.compraOferta(a_cookie["login"].value,form["nome_oferta"].value,oferta.validade,form["dropdown"].value)
+                   if form["check"].value == "Comprar oferta":
+                       a_cookie = Cookie.Cookie( os.environ.get("HTTP_COOKIE", "") )
+                       oferta = self.getOferta(form["nome_oferta"].value)
+                       self.compraOferta(a_cookie["login"].value,form["nome_oferta"].value,oferta.validade,form["dropdown"].value)
+                   elif form["check"].value == "Recomendar oferta":
+                       self.recomendarOferta(form["nome_oferta"].value)
+                     
+    
+    def recomendarOferta(self,nomeOferta):
+        mOferta = MOferta.Oferta()
+        mOferta.open(nomeOferta)
+        mensagem = "Nome da oferta: "+mOferta.nome+" \nPreco: "+mOferta.preco+"\n"
+        print "Content-type:text/html\r\n\r\n"
+        print "<meta HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=/cgi-bin/Tela/TRecomendarOferta.py?mensagem=%s\">" % (mensagem)
+
+#        import LEnviarEmail
+#        LEnviarEmail.enviarEmail(email,mensagem)
+        
            
     def compraOferta(self,nomeComprador,nomeOferta,validadeOferta,quantidade):
         mOferta = MOferta.Oferta()

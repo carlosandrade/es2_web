@@ -32,6 +32,12 @@ class FNegocio:
 
      def logicaAdministrador(self,form):
          lAdministrador = LAdministrador.LAdministrador(form)
+         
+     def logicaEnviarEmail(self,form):
+       #  LEnviarEmail.enviarEmail(form["email"].value,"Um amigo lhe recomendou uma oferta do Compron!",form["mensagem"].value)
+         import LEnviarEmail
+         LEnviarEmail.main(form)
+
 
      def administradorDropOfertasPendentes(self):
          lAdministrador = LAdministrador.LAdministrador()
@@ -72,8 +78,10 @@ def main():
             fNegocio.logicaAdministrador(form)
         elif (form["action"].value == "TSubmissaoOferta") or (form["action"].value == "TCompraOferta"):
             fNegocio.logicaOferta(form)
-        elif form["action"].value == "TCadastroConsumidor" or (form["action"].value == "TEnviarSugestao") or (form["action"].value == "TIndicarAmigo"):
+        elif form["action"].value == "TCadastroConsumidor" or (form["action"].value == "TEnviarSugestao"):
             fNegocio.logicaConsumidor(form)
+        elif form["action"].value == "TRecomendarOferta" or (form["action"].value) == "TIndicarAmigo":
+            fNegocio.logicaEnviarEmail(form)
         elif form["action"].value == "TPrincipal":
             print "Content-type:text/html\r\n\r\n"
             if form["check"].value == "Login":

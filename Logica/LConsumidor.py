@@ -33,47 +33,47 @@ class LConsumidor:
         print "Content-type:text/html\r\n\r\n"
         print "<meta HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=/cgi-bin/Tela/TEnviarSugestao.py?update=exibeSugestaoSalva\">"
         
-    def enviarEmail(self,email, mensagem):
+#    def enviarEmail(self,email, mensagem):
         
-        import smtplib
-        import getpass
+#        import smtplib
+#        import getpass
 
-        SMTP_SERVER = 'smtp.gmail.com'
-        SMTP_PORT = 587
+#        SMTP_SERVER = 'smtp.gmail.com'
+#        SMTP_PORT = 587
 
-        sender = 'compron.python@gmail.com'
+#        sender = 'compron.python@gmail.com'
 
-        #HERE'S THE PASSWORD, IN PLAIN TEXT
-        password = 'padawan22'
-        recipient = email
-        subject = 'Um amigo seu lhe indicou ao nosso site!'
-        body = "Mensagem do seu amigo: "+mensagem+"\n Atenciosamente, \n A equipe do Compron\n"
+#        #HERE'S THE PASSWORD, IN PLAIN TEXT
+#        password = 'padawan22'
+#        recipient = email
+#        subject = 'Um amigo seu lhe indicou ao nosso site!'
+#        body = "Mensagem do seu amigo: "+mensagem+"\n Atenciosamente, \n A equipe do Compron\n"
 
-        "Sends an e-mail to the specified recipient."
+#        "Sends an e-mail to the specified recipient."
 
-        body = "" + body + ""
+#        body = "" + body + ""
 
-        headers = ["From: " + sender,
-                   "Subject: " + subject,
-                   "To: " + recipient,
-                   "MIME-Version: 1.0",
-                   "Content-Type: text/html"]
-        headers = "\r\n".join(headers)
+#        headers = ["From: " + sender,
+#                   "Subject: " + subject,
+#                   "To: " + recipient,
+#                   "MIME-Version: 1.0",
+#                   "Content-Type: text/html"]
+#        headers = "\r\n".join(headers)
 
-        session = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
+#        session = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
 
-        session.ehlo()
-        session.starttls()
-        session.ehlo
+#        session.ehlo()
+#        session.starttls()
+#        session.ehlo
 
         #THIS IS WHERE THE PASSWORD IS USED
-        session.login(sender, password)
+#        session.login(sender, password)
 
-        session.sendmail(sender, recipient, headers + "\r\n\r\n" + body)
-        session.quit()
+#        session.sendmail(sender, recipient, headers + "\r\n\r\n" + body)
+#        session.quit()
                 
-        print "Content-type:text/html\r\n\r\n"
-        print "<meta HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=/cgi-bin/Tela/TIndicarAmigo.py?update=exibeEmailEnviadoComSucesso\">"
+#        print "Content-type:text/html\r\n\r\n"
+#        print "<meta HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=/cgi-bin/Tela/TIndicarAmigo.py?update=exibeEmailEnviadoComSucesso\">"
 
 
 
