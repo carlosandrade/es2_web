@@ -20,7 +20,7 @@ class Consumidor:
         self.password = password
       
     def save(self):
-        file = open("/Library/WebServer/CGI-ExecutablesBanco/consumidor.txt","a+")
+        file = open("/Library/WebServer/CGI-Executables/Banco/consumidor.txt","a+")
         file.write(self.nome+" "+self.login+" "+self.password+" "+self.email+" "+self.ncartao+" "+self.tipoCartao+" \n")
         file.close()
 
@@ -32,7 +32,7 @@ class Consumidor:
                 self.nome,self.login,self.password,self.email,self.ncartao,self.tipoCartao,enter = campoConsumidor
                
     def openAll(self):
-        file = open("/Library/WebServer/CGI-ExecutablesBanco/consumidor.txt","r+")
+        file = open("/Library/WebServer/CGI-Executables/Banco/consumidor.txt","r+")
         consumidores = file.readlines()
         file.close()
         return consumidores

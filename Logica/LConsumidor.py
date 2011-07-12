@@ -99,15 +99,6 @@ class LConsumidor:
         usuario = MUsuario.Usuario("consumidor",login,password)
         usuario.save()
         print "Content-type:text/html\r\n\r\n"
-        print "<html>"
-        print "<head>"
-        print "<title>Hello - Second CGI Program</title>"
-        print "</head>"
-        print "<body>"
-        print "<h2>Os dados da oferta",nome,"foram cadastrados com sucesso</h2>\n"
-        print "<p>O que deseja fazer agora?\n<p>"
-        print " <a href=\"TCadastroConsumidor.py\">Retornar a tela de cadastro de consumidor</a>"
-        print "</body>"
-        print "</html>"
+        print "<meta HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=/cgi-bin/Tela/TCadastroConsumidor.py?update=exibeConsumidorCadastradoComSucesso\">"
 
 

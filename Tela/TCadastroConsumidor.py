@@ -5,8 +5,33 @@ sys.path.append("/Library/WebServer/CGI-Executables/")
 sys.path.append("/Library/WebServer/CGI-Executables/Logica")
 sys.path.append("/Library/WebServer/CGI-Executables/Model")
 sys.path.append("/Library/WebServer/CGI-Executables/Tela")
+import cgi, cgitb, string
+import FNegocio
+cgitb.enable()
 
-def imprime_tabela_de_dados():
+def consumidorCadastradoComSucesso():
+    print "Content-type:text/html\r\n\r\n"
+    print "<html>"
+    print "<head>"
+    print "<title>Consumidor cadastrado com sucesso!</title>"
+    print "</head>"
+    print "<body>"
+    print "<h2>O consumidor foi cadastrado com sucesso!</h2>\n"
+    print "<p>O que deseja fazer agora?\n<p>"
+    print " <a href=\"TCadastroConsumidor.py\">Retornar a tela de cadastro de consumidor</a>"
+    print "</body>"
+    print "</html>"
+ 
+
+
+def default():
+    print "Content-type:text/html\r\n\r\n"
+    print "<HTML>\n"
+    print "<HEAD>\n"
+    print "\t<TITLE>Cadastro de Usuario</TITLE>\n"
+    print "</HEAD>\n"
+    print "<BODY BGCOLOR = white>\n"
+
     print "\t<H3>Favor preencher os dados requisitados<H3>\n"
     print "\t<TABLE BORDER = 0> \n"
     print "\t\t<FORM METHOD = post ACTION = \
@@ -43,18 +68,20 @@ def imprime_tabela_de_dados():
     print "\t<INPUT TYPE = submit NAME = \"check\" VALUE = \"cadastrar\">\n"
     print "\t</FORM>\n"
 
-
-def main():
-    print "Content-type:text/html\r\n\r\n"
-    print "<HTML>\n"
-    print "<HEAD>\n"
-    print "\t<TITLE>Cadastro de Usuario</TITLE>\n"
-    print "</HEAD>\n"
-    print "<BODY BGCOLOR = white>\n"
-
-    imprime_tabela_de_dados()
-
     print "</BODY>\n"
     print "</HTML>\n"	
 	
+def main():
+    form = cgi.FieldStorage()
+    if form.has_key("update"):
+        if form["update"].value == "exibeConsumidorCadastradoComSucesso":
+            consumidorCadastradoComSucesso()
+        #elif form["update"].value == "exibeOfertaRecusada":
+        #    ofertaRecusadacomSucesso()
+        else:
+            default()                                            
+    else:  
+        default()
+
+
 main()
