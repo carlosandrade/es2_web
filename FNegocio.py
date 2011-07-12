@@ -2,12 +2,19 @@
 
 # Import the CGI, string, sys, and md5crypt modules
 
+import sys
+sys.path.append("/Library/WebServer/CGI-Executables/")
+sys.path.append("/Library/WebServer/CGI-Executables/Logica")
+sys.path.append("/Library/WebServer/CGI-Executables/Model")
+sys.path.append("/Library/WebServer/CGI-Executables/Tela")
 import cgi, cgitb
-import LEmpresa, LUsuario
-import LAdministrador, LOferta
-import LConsumidor
-import biscoito, Cookie, os
+import Cookie, os
+
+
+import LEmpresa, LUsuario, LAdministrador, LOferta,  LConsumidor
+
 cgitb.enable()
+
 
 class FNegocio:
 
@@ -70,13 +77,13 @@ def main():
         elif form["action"].value == "TPrincipal":
             print "Content-type:text/html\r\n\r\n"
             if form["check"].value == "Login":
-                print "<meta HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=/cgi-bin/TLogin.py\">"
+                print "<meta HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=/cgi-bin/Tela/TLogin.py\">"
             elif form["check"].value == "Cadastrar(Cliente)":
-                print "<meta HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=/cgi-bin/TCadastroConsumidor.py\">"
+                print "<meta HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=/cgi-bin/Tela/TCadastroConsumidor.py\">"
             elif form["check"].value == "Cadastrar(Empresa)":
-                print "<meta HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=/cgi-bin/TCadastroEmpresa.py\">"
+                print "<meta HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=/cgi-bin/Tela/TCadastroEmpresa.py\">"
             elif form["check"].value == "Compre Agora!":
-                print "<meta HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=/cgi-bin/TCompraOferta.py\">"
+                print "<meta HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=/cgi-bin/Tela/TCompraOferta.py\">"
                             
                     
         else:  
